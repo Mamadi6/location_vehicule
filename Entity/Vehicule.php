@@ -1,40 +1,82 @@
 <?php
 
-class Vehicule{
+class Vehicule
+{
 
-    private $id;
-    private $marque;
-    private $couleur;
-    private $description;
-    private $prix_journalier;
-    private $photo;
+	private int $id;
+	private string $marque;
+	private string $couleur;
+	private string $description;
+	private float $prix_journalier;
+	private string $photo;
 
-    public function __construct( $id,  $marque,  $couleur,  $description,  $prix_journalier,  $photo){$this->id = $id;$this->marque = $marque;$this->couleur = $couleur;$this->description = $description;$this->prix_journalier = $prix_journalier;$this->photo = $photo;}
-	
-    public function getId() {return $this->id;}
+	public function __construct(int $id, string $marque, string $couleur, string $description, float $prix_journalier, string $photo)
+	{
+		$this->id = $id;
+		$this->marque = $marque;
+		$this->couleur = $couleur;
+		$this->description = $description;
+		$this->prix_journalier = $prix_journalier;
+		$this->photo = $photo;
+	}
 
-	public function getMarque() {return $this->marque;}
+	public function getId(): int
+	{
+		return $this->id;
+	}
 
-	public function getCouleur() {return $this->couleur;}
+	public function getMarque(): string
+	{
+		return $this->marque;
+	}
 
-	public function getDescription() {return $this->description;}
+	public function getCouleur(): string
+	{
+		return $this->couleur;
+	}
 
-	public function getPrixJournalier() {return $this->prix_journalier;}
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
 
-	public function getPhoto() {return $this->photo;}
+	public function getPrixJournalier(): float
+	{
+		return $this->prix_journalier;
+	}
 
-	
-    public function setId( $id): void {$this->id = $id;}
+	public function getPhoto(): string
+	{
+		return $this->photo;
+	}
 
-	public function setMarque( $marque): void {$this->marque = $marque;}
+	public function setId(int $id): void
+	{
+		$this->id = $id;
+	}
 
-	public function setCouleur( $couleur): void {$this->couleur = $couleur;}
+	public function setMarque(string $marque): void
+	{
+		$this->marque = $marque;
+	}
 
-	public function setDescription( $description): void {$this->description = $description;}
+	public function setCouleur(string $couleur): void
+	{
+		$this->couleur = $couleur;
+	}
 
-	public function setPrixJournalier( $prix_journalier): void {$this->prix_journalier = $prix_journalier;}
+	public function setDescription(string $description): void
+	{
+		$this->description = $description;
+	}
 
-	public function setPhoto( $photo): void {$this->photo = $photo;}
+	public function setPrixJournalier(float $prix_journalier): void
+	{
+		$this->prix_journalier = $prix_journalier;
+	}
 
-	
+	public function setPhoto(string $photo): void
+	{
+		$this->photo = $photo;
+	}
 }

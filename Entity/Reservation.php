@@ -1,44 +1,83 @@
 <?php
 
-class Reservation{
+class Reservation
+{
 
-    private $id;
-    private $debut;
-    private $fin;
-    private $dateReservation;
-    private $client;
-    private $vehicule;
+	private int $id;
+	private string $debut;
+	private string $fin;
+	private string $dateReservation;
+	private User $client;
+	private Vehicule $vehicule;
 
-    public function __construct( $id,  $debut,  $fin,  $dateReservation,  $client,  $vehicule){$this->id = $id;$this->debut = $debut;$this->fin = $fin;$this->dateReservation = $dateReservation;$this->client = $client;$this->vehicule = $vehicule;}
-	
+	public function __construct(int $id, string $debut, string $fin, string $dateReservation, User $client, Vehicule $vehicule)
+	{
+		$this->id = $id;
+		$this->debut = $debut;
+		$this->fin = $fin;
+		$this->dateReservation = $dateReservation;
+		$this->client = $client;
+		$this->vehicule = $vehicule;
+	}
 
-    public function getId() {return $this->id;}
 
-	public function getDebut() {return $this->debut;}
+	public function getId(): int
+	{
+		return $this->id;
+	}
 
-	public function getFin() {return $this->fin;}
+	public function getDebut(): string
+	{
+		return $this->debut;
+	}
 
-	public function getDateReservation() {return $this->dateReservation;}
+	public function getFin(): string
+	{
+		return $this->fin;
+	}
 
-	public function getClient() {return $this->client;}
+	public function getDateReservation(): string
+	{
+		return $this->dateReservation;
+	}
 
-	public function getVehicule() {return $this->vehicule;}
+	public function getClient(): User
+	{
+		return $this->client;
+	}
 
-	
+	public function getVehicule(): Vehicule
+	{
+		return $this->vehicule;
+	}
 
-    public function setId( $id): void {$this->id = $id;}
+	public function setId(int $id): void
+	{
+		$this->id = $id;
+	}
 
-	public function setDebut( $debut): void {$this->debut = $debut;}
+	public function setDebut(string $debut): void
+	{
+		$this->debut = $debut;
+	}
 
-	public function setFin( $fin): void {$this->fin = $fin;}
+	public function setFin(string $fin): void
+	{
+		$this->fin = $fin;
+	}
 
-	public function setDateReservation( $dateReservation): void {$this->dateReservation = $dateReservation;}
+	public function setDateReservation(string $dateReservation): void
+	{
+		$this->dateReservation = $dateReservation;
+	}
 
-	public function setClient( $client): void {$this->client = $client;}
+	public function setClient(User $client): void
+	{
+		$this->client = $client;
+	}
 
-	public function setVehicule( $vehicule): void {$this->vehicule = $vehicule;}
-
-	
-
-    
+	public function setVehicule(Vehicule $vehicule): void
+	{
+		$this->vehicule = $vehicule;
+	}
 }
