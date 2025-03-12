@@ -7,3 +7,7 @@ spl_autoload_register(function($classe){
         include $page;
     }
 });
+
+include_once "Vue/header.phtml";
+
+var_dump($_GET);
