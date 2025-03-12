@@ -10,4 +10,4 @@ spl_autoload_register(function($classe){
 
 include_once "Vue/header.phtml";
 
-var_dump($_GET);
+// var_dump($_GET);

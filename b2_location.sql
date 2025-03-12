@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `b2_location`
 --
-CREATE DATABASE b2_location
+-- CREATE DATABASE b2_location
 -- --------------------------------------------------------
 
 --
