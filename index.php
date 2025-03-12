@@ -8,6 +8,17 @@ spl_autoload_register(function($classe){
     }
 });
 
+
+include "Model/ModelAbstract.php";
+include "Model/UserModel.php";
+
+include "Controller/UserController.php";
+
+
+$userCtl = new UserController;
+
 include_once "Vue/header.phtml";
 
-// var_dump($_GET);
+$userCtl->userAction();
+
+include_once "Vue/footer.phtml";

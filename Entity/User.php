@@ -5,19 +5,19 @@ class User
 
     private $id;
     private $prenom;
-    private $nom;
     private $login;
     private $mdp;
     private $role;
     private $adresse;
     private $cp;
+    private $ville;
     private $dateInscription;
 
-    public function __construct($id,  $prenom,  $nom,  $login,  $mdp,  $role,  $adresse,  $cp,  $dateInscription)
+    public function __construct($id, $prenom, $login,  $mdp,  $role,  $adresse,  $cp, $ville,  $dateInscription = null)
     {
         $this->id = $id;
         $this->prenom = $prenom;
-        $this->nom = $nom;
+        $this->ville = $ville;
         $this->login = $login;
         $this->mdp = $mdp;
         $this->role = $role;
@@ -36,9 +36,9 @@ class User
         return $this->prenom;
     }
 
-    public function getNom()
+    public function getVille()
     {
-        return $this->nom;
+        return $this->ville;
     }
 
     public function getLogin()
@@ -82,9 +82,9 @@ class User
         $this->prenom = $prenom;
     }
 
-    public function setNom($nom): void
+    public function setVille($ville): void
     {
-        $this->nom = $nom;
+        $this->ville = $ville;
     }
 
     public function setLogin($login): void
