@@ -45,13 +45,14 @@ class UserController{
                     break;
 
                 case "show":
+                    
                     $user = $this->userMdl->findById(1);
       
                     include "Vue/user/show.phtml";
                     break;
 
                 case "delete":
-                    echo "delete";
+
                     header("location:?actionUser=user");
                     exit;
             }
