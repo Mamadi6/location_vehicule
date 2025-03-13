@@ -3,6 +3,7 @@
 class User
 {
 
+    // Attributs de class User 
     private $id;
     private $prenom;
     private $login;
@@ -13,6 +14,7 @@ class User
     private $ville;
     private $dateInscription;
 
+    // contructeur: invoqué au moment de l'instanciation(new Use(..., ..., ...))
     public function __construct($id, $prenom, $login,  $mdp,  $role,  $adresse,  $cp, $ville,  $dateInscription = null)
     {
         $this->id = $id;
@@ -25,6 +27,8 @@ class User
         $this->cp = $cp;
         $this->dateInscription = $dateInscription;
     }
+
+    // GETTER (accesseur)
 
     public function getId()
     {
@@ -71,6 +75,7 @@ class User
         return $this->dateInscription;
     }
 
+    // SETTER (mutateur)
 
     public function setId($id): void
     {
