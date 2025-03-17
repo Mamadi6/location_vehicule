@@ -12,22 +12,34 @@ abstract class ModelAbstract{
         ]);
     }
 
+    /**
+     * prend en param la requête et tableau de données optionnel
+     */
     public function executerequete($query, $data = []){
+        // préparation e larequête
         $stmt = $this->pdo->prepare($query);
         //
-
+        // execution la requête
         $stmt->execute($data);
 
         return $stmt;
     }
 
+    /**
+     * prend en param le nom de la table sur laquelle faire la requête
+     */
     public function getAll($table){
         return $this->executerequete("SELECT *  FROM " . $table);
     }
 
+    /**
+     * prend en param le nom de la table et d'un ID sur laquelle faire la requête
+     */
     public function getOne($table, $id){
         return $this->executerequete("SELECT *  FROM " . $table ." WHERE id = :id", ["id" => $id]);
     }
+
+    // Methodes abstraites à redéfinir aux classes filles obligatoirement
 
     abstract function new($objet);
     abstract function update($objet);
