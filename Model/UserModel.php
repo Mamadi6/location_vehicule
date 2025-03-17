@@ -60,7 +60,7 @@ $query = "INSERT INTO user VALUES(NULL, :prenom, :login, :mdp, :role, :adrr, :cp
         $data = ["prenom" =>$user->getPrenom(),
                  "login" =>$user->getLogin(),
                  "role" =>$user->getRole(),
-                 "adresse" =>$user->getdresse(),
+                 "adresse" =>$user->getAdresse(),
                  "cp" =>$user->getCp(),
                  "ville" =>$user->getVille(),
                  "id" =>$user->getId()];
@@ -69,9 +69,8 @@ $query = "INSERT INTO user VALUES(NULL, :prenom, :login, :mdp, :role, :adrr, :cp
     }
 
     public function show($identifiant){
-        $query = "SELECT * FROM user WHERE id = :id";
 
-        $stmt = $this->executerequete($query, ["id"=>$identifiant]);
+        $stmt = $this->getOne("user", $identifiant);
 
         $res = $stmt->fetch();
         extract($res);

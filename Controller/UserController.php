@@ -68,7 +68,7 @@ class UserController{
                         $user = new User($id, $prenom, $login, $mdp, $role, $adresse, $cp, $ville);
                         $this->userMdl->update($user);
 
-                        header("location: ?ctionUser=user");
+                        header("location: ?actionUser=user");
                         exit;
                     }
 
@@ -85,6 +85,7 @@ class UserController{
 
                 case "delete":
                     $this->userMdl->delete($id);
+                    
                     header("location:?actionUser=user");
                     exit;
                 
