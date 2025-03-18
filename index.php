@@ -17,11 +17,22 @@ spl_autoload_register(function($classe){
 
 
 $userCtl = new UserController;
+$clientCtl = new ClientController();
 
 
 include_once "Vue/header.phtml";
 
-$userCtl->userAction();
+// faire le bloc 'try' si tout se passe bien
+try{
+    $userCtl->userAction();
+    $clientCtl->userAction();
+
+// Si le 'try' echoue, on effectue le 'catch'
+}catch(Exception $e){
+    $erreur = $e->getMessage();
+    include "Vue/erreur.phtml";
+}
+
 
 include_once "Vue/footer.phtml";
 

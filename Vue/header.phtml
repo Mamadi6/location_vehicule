@@ -27,12 +27,12 @@
             <div class=" text-end">
 
             <?php if( isset($_SESSION['user'])): ?> 
-                <a class="" href="index.php?actionUser=">Compte</a>
-                <a class="" href="index.php?actionUser=logout">Logout</a>
+                <a class="" href="index.php?actionClient=">Compte</a>
+                <a class="" href="index.php?actionClient=logout">Logout</a>
                 <span>Bonjour <?= unserialize($_SESSION['user'])->getPrenom() ?></span>
             <?php else: ?>
-                <a class="" href="index.php?actionUser=login">Login</a>
-                <a class="" href="index.php?actionUser=logon">Logon</a>
+                <a class="" href="index.php?actionClient=login">Login</a>
+                <a class="" href="index.php?actionClient=logon">Logon</a>
             <?php endif; ?>
             </div>
 
