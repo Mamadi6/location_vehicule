@@ -16,9 +16,13 @@ spl_autoload_register(function($classe){
 
 $userCtl = new UserController;
 
+$vehiculeCtl = new VehiculeController;
+
 
 include_once "Vue/header.phtml";
 
 $userCtl->userAction();
+
+$vehiculeCtl->vehiculeAction();
 
 include_once "Vue/footer.phtml";

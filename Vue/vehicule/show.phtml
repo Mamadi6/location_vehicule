@@ -1,0 +1,9 @@
+<h2 class="text-center">Détail sur le vehicule <?= $vehicule->getMarque() ?></h2>
+
+<p>
+ <img src="Public/images/<?= $vehicule->getPhoto() ?>" alt="" width="400px">
+</p>
+
+Ce vehicule <?= $vehicule->getMarque() ?> est de couleur : <?= $vehicule->getCouleur() ?> <br>
+Prix par jour est : <?= $vehicule->getPrixJournalier() ?> € <br>
+sa description <?= $vehicule->getDescription() ?>

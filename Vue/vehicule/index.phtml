@@ -1,0 +1,31 @@
+<h2 class="text-center">Liste de Clients</h2>
+
+    <a href="?actionVehi=new" class="btn btn-success my-2">Ajouter</a>
+
+    <table class="table table-striped">
+        <tr class="table-dark">
+            <th>Marque</th>
+            <th>Couleur</th>
+            <th>Description</th>
+            <th>Prix du jour</th>
+            <th>Photo</th>
+            <th>Action</th>
+        </tr>
+
+        <?php foreach($vehicules as $vehicule): ?>
+            <tr>
+                <td> <?= $vehicule->getMarque() ?></td>
+                <td> <?= $vehicule->getCouleur() ?></td>
+                <td> <?= $vehicule->getDescription() ?></td>
+                <td> <?= $vehicule->getPrixJournalier() ?></td>
+                <td> <img src="Public/images/<?= $vehicule->getPhoto() ?>" alt="" width="80px"></td>
+                <td>
+                    <a href="?actionVehi=update&id=<?=$vehicule->getId() ?>"><i class="fa-solid fa-pen"></i></a> |
+                    <a href="?actionVehi=delete&id=<?=$vehicule->getId() ?>"><i class="fa-solid fa-trash"></i></a> |
+                    <a href="?actionVehi=show&id=<?=$vehicule->getId() ?>"><i class="fa-solid fa-eye"></i></a>
+                </td>
+            </tr>
+        <?php endforeach ?>
+
+       
+    </table>

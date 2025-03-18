@@ -1,0 +1,35 @@
+
+<h2 class="text-center">new vehicule</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Marque</label>
+        <input type="text" name="marque" class="form-control" value="<?=$vehicule->getMarque() ?>" >
+    </div>
+
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Couleur</label>
+        <input type="text" name="couleur" class="form-control" value="<?=$vehicule->getCouleur() ?>" >
+    </div>
+
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Description</label>
+        <textarea name="description" class="form-control" value="<?=$vehicule->getDescription() ?>"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Prix du jour</label>
+        <input type="text" name="prix_journalier" class="form-control" value="<?=$vehicule->getprixJournalier() ?>" >
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Photo</label>
+        <input type="file" name="photo" class="form-control" value="<?=$vehicule->getPhoto() ?>" >
+    </div>
+    
+    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
