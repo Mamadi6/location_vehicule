@@ -88,7 +88,49 @@ class UserController{
                     
                     header("location:?actionUser=user");
                     exit;
+
+                case 'login':
+
+                    if( isset($_POST['login']) ){
+                        // user = un user si login et mdp OK, sinon NULL
+                        $user = $this->userMdl->login($_POST['login'], $_POST['mdp']);
+
+                        // TEST si $user != null
+                        if( $user ){
+                            // Création de la session
+                            $_SESSION['user'] = serialize($user);
+                            $_SESSION['ADMIN'] = $user->getRole() == "ADMIN" ? true : false;
+
+                            header("location: .");
+                            exit;
+                        }
+                    }
                 
+                    include "Vue/user/login.phtml";
+                    break;
+
+                case "logon":
+                    
+                    if( isset($_POST['login']) ){
+                        extract($_POST);
+
+                        $user = new User(0, $prenom, $login, $mdp, "CLIENT", $adresse, $cp, $ville);
+
+                        $this->userMdl->new($user);
+
+                        header("location: ?actionUser=login");
+                        exit;
+                    }
+
+                    include "Vue/user/logon.phtml";
+                    break;
+                
+                case "logout":
+                    session_destroy();
+
+                    header("location: .");
+                    exit;
+
                 default:
                     // a modifier
                     echo "acion user incorrect";
