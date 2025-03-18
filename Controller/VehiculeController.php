@@ -1,6 +1,6 @@
 <?php
 
-class VehiculeController{
+class VehiculeController extends ControllerAbstract{
     private $vehiculeMdl;
 
     public function __construct(){
@@ -12,6 +12,10 @@ class VehiculeController{
 
         if(isset($_GET['actionVehi'])){
             extract($_GET);
+
+            if( !$this->isAdmin() ){
+                $this->throwException("Il faut être connecté et avoir le rôle ADMIN");
+            }
 
             switch ($actionVehi) {
                 case 'vehicule':
@@ -65,7 +69,7 @@ class VehiculeController{
                     break;
                 
                 default:
-                    # code...
+                    throw new Exception("Page demandée n'existe pas!");
                     break;
             }
         }

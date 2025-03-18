@@ -28,6 +28,7 @@ include_once "Vue/header.phtml";
 try{
     $userCtl->userAction();
     $clientCtl->userAction();
+    $vehiculeCtl->vehiculeAction();
 
 // Si le 'try' echoue, on effectue le 'catch'
 }catch(Exception $e){
@@ -36,7 +37,7 @@ try{
 }
 
 
-$vehiculeCtl->vehiculeAction();
+
 
 include_once "Vue/footer.phtml";
 
