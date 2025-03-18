@@ -3,6 +3,8 @@
 
     <a href="?actionUser=new" class="btn btn-success my-2">Ajouter</a>
 
+    <?php if( !empty($users) ): ?>
+
     <table class="table table-striped">
         <tr class="table-dark">
             <th>Prénom</th>
@@ -27,3 +29,7 @@
         <?php endforeach; ?>
 
     </table>
+
+    <?php else: ?>
+        <h3 class="text-center">Pas de clients en BD</h3>
+    <?php endif; ?>

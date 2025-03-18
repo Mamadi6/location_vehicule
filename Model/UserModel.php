@@ -63,12 +63,16 @@
         return new User($id, $prenom, $login, $mdp, $role, $adresse, $cp, $ville, $dateInscription);
     }
 
-    public function new($user){
+    public function isLogin(string $login) {
+        return $this->executerequete("SELECT * FROM user WHERE login = :login", ["login" => $login]);
+    }
 
-/**
- * 
-$query = "INSERT INTO user VALUES(NULL, :prenom, :login, :mdp, :role, :adrr, :cp, :ville, now())";
-    */
+    public function new($user){
+        // VERIFIER SI LOGIN EXISTE EN BD
+        if( $this->isLogin($user->getLogin())->rowCount() ){
+            throw new Exception("Ce login '". $user->getLogin() ."' existe déjà");
+        }
+
         $query = "INSERT INTO user (prenom, login, mdp, role, adresse, cp, ville) VALUES(:prenom, :login, :mdp, :role, :adrr, :cp, :ville)";
 
         $this->executerequete($query, [
@@ -99,6 +103,11 @@ $query = "INSERT INTO user VALUES(NULL, :prenom, :login, :mdp, :role, :adrr, :cp
     public function show($identifiant){
 
         $stmt = $this->getOne("user", $identifiant);
+
+        // Vérifie si le user existe avnt consultation
+        if( $stmt->rowCount() == 0 ){
+            throw new Exception(" ce client n'existe pas");
+        }
 
         $res = $stmt->fetch();
         extract($res);
