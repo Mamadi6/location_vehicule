@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 spl_autoload_register(function($classe){
     $page = "Entity/" . $classe . ".php";
 
@@ -26,3 +28,24 @@ $userCtl->userAction();
 $vehiculeCtl->vehiculeAction();
 
 include_once "Vue/footer.phtml";
+
+
+// $x = 10;
+// $y = 0;
+
+// $t = [10, 20];
+
+// try{
+//     echo $x / $y;
+   
+//     if( $y >= count($t) ){
+//         throw new Exception(" y trop grnad que la taille du tableau");
+//     }
+
+//     echo $t[$y];
+
+// }catch(Exception $e){
+//     echo "excep";
+// }catch(Throwable $e){
+//     echo "erreur " . $e->getMessage();
+// }

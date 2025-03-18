@@ -14,18 +14,29 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href=".">Home</a>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="?actionUser=user">User</a>
-                    <a class="nav-link" href="?actionVehi=vehicule">Véhicule</a>
-                    <a class="nav-link" href="#">Réservation</a>
+
+
+            <?php if( isset($_SESSION['user']) && $_SESSION['ADMIN'] ): ?> 
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="?actionUser=user">User</a>
+                        <a class="nav-link" href="?actionVehi=vehicul">Véhicule</a>
+                        <a class="nav-link" href="#">Réservation</a>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <div class=" text-end">
-                <a class="" href="#">Login</a>
-                <a class="" href="#">Logon</a>
-                <a class="" href="#">Logout</a>
+
+            <?php if( isset($_SESSION['user'])): ?> 
+                <a class="" href="index.php?actionUser=">Compte</a>
+                <a class="" href="index.php?actionUser=logout">Logout</a>
+                <span>Bonjour <?= unserialize($_SESSION['user'])->getPrenom() ?></span>
+            <?php else: ?>
+                <a class="" href="index.php?actionUser=login">Login</a>
+                <a class="" href="index.php?actionUser=logon">Logon</a>
+            <?php endif; ?>
             </div>
+
         </div>
     </nav>
     <main class="container-fluid">

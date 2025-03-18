@@ -2,6 +2,34 @@
 
  class UserModel extends ModelAbstract{
 
+
+    /**
+     * Connexion user. retounrne un user sinon null 
+     * @return User
+     */
+    public function login(string $login, string $mdpForm){
+        
+        $stmt = $this->executerequete("SELECT * FROM user WHERE login = :login", ["login" => $login]);
+
+
+        // TEST si on a une ligne récupérée par le 'login'
+        if( $stmt->rowCount() ){
+            extract($stmt->fetch());
+
+            // TEST si le mdp de la BD est égal qu mdpFormulaire
+            if( password_verify($mdpForm, $mdp) ){
+               
+                //On retourne un 'USER'
+                $user = $this->findById($id);
+                return $user;
+            }
+        }
+
+        // Si LOGIN et MDP pas correctes, on retourne NULL
+        return null;
+    }
+
+
     /**
      * Retourne la liste de tous les clients
      * @return list User
