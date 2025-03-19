@@ -15,6 +15,8 @@ class ClientController extends ControllerAbstract{
     public function userAction(){
         $user = new User(0,"", "", "","", "", "","","");  
 
+        $erreurs = [];
+
          // TEST SI le 'user' est un 'ADMIN'
         //  if( !$this->isAdmin() ){
         //     $this->throwException("Il faut être connecté et avoir le rôle ADMIN");
@@ -50,15 +52,36 @@ class ClientController extends ControllerAbstract{
 
                 case "logon":
                     
-                    if( isset($_POST['login']) ){
+                    if( isset($_POST['prenom']) ){
                         extract($_POST);
+                        
+
+                        // Validation données USER
+                        $pattern =  '/^[A-Za-z]+([ \-][A-Za-z]+)*$/u';
+                        if( (strlen( trim($prenom) ) < 2) || !preg_match($pattern, $prenom) ){
+                            $erreurs["prenom"] = "le prénom doit avoir 2 carac mini de A-Z";
+                        }
+
+                        if( (strlen( trim($login) ) < 4) || strpos($login, ' ') ){
+                            $erreurs["login"] = "mini 4 et pas d'espace";
+                        }
+
+                        if( (strlen( trim($mdp) ) < 4) || strpos($mdp, ' ') ){
+                            $erreurs["mdp"] = "mini 4 et pas d'espace";
+                        }
 
                         $user = new User(0, $prenom, $login, $mdp, "CLIENT", $adresse, $cp, $ville);
 
-                        $this->userMdl->new($user);
+                        $msgErreurForm = "Veuillez remplir correctement le formulaire ! ";
 
-                        header("location: ?actionUser=login");
-                        exit;
+                        // Si aucune erreur dans l'array 'erreurs'
+                        if( count($erreurs)  == 0) {
+
+                            $this->userMdl->new($user);
+
+                            header("location: ?actionClient=login");
+                            exit;
+                        }
                     }
 
                     include "Vue/user/logon.phtml";

@@ -75,7 +75,7 @@
 
         $query = "INSERT INTO user (prenom, login, mdp, role, adresse, cp, ville) VALUES(:prenom, :login, :mdp, :role, :adrr, :cp, :ville)";
 
-        $this->executerequete($query, [
+        $stmt = $this->executerequete($query, [
             "prenom"    => $user->getPrenom(),
             "login"     => $user->getLogin(),
             "mdp"       => password_hash($user->getMdp(), PASSWORD_DEFAULT),
@@ -84,6 +84,10 @@
             "cp"        => $user->getCp(),
             "ville"     => $user->getVille()
         ]);
+
+        if($stmt->rowCount()){
+            $_SESSION["success"] = "L'inscription a bien réussie";
+        }
     }
 
     public function update($user) {
@@ -98,6 +102,10 @@
                  "id" =>$user->getId()];
 
         $stmt = $this->executerequete($query, $data);
+
+        if($stmt->rowCount()){
+            $_SESSION["success"] = "La mise à jour a bien réussie";
+        }
     }
 
     public function show($identifiant){
@@ -117,7 +125,11 @@
     }
 
     public function delete($identifiant){
-        $this->executerequete("DELETE FROM user WHERE id = :id", ["id" => $identifiant]);
+        $stmt = $this->executerequete("DELETE FROM user WHERE id = :id", ["id" => $identifiant]);
+
+        if($stmt->rowCount()){
+            $_SESSION["success"] = "La suppression a bien réussie";
+        }
     }
 
  }

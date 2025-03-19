@@ -39,4 +39,14 @@
         </div>
     </nav>
     <main class="container-fluid">
+        <?php if( isset($_SESSION["success"]) ): ?>
+            <div class="alert alert-success"> 
+                <?= $_SESSION["success"] ?>
+            </div>
+        <?php endif; ?>
+        <?php if( isset($_SESSION["warning"]) ): ?>
+            <div class="alert alert-warning"> 
+                <?= $_SESSION["warning"] ?>
+            </div>
+        <?php endif; ?>
         <!-- Contnenu qui change d'une page à une autre -->

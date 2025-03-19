@@ -4,7 +4,7 @@
     <form method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Prénom</label>
-            <input type="text" name="prenom" class="form-control" value="<?= $user->getPrenom() ?>">
+            <input type="text" name="prenom" required class="form-control" value="<?= $user->getPrenom() ?>" />
         </div>
 
         
@@ -16,7 +16,7 @@
         
         <div class="form-group">
             <label for="exampleInputEmail1">Password</label>
-            <input type="password" name="mdp" class="form-control">
+            <input type="password" name="mdp" class="form-control" required />
         </div>
 
         
