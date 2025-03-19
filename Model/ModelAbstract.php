@@ -18,7 +18,15 @@ abstract class ModelAbstract{
     public function executerequete($query, $data = []){
         // préparation e larequête
         $stmt = $this->pdo->prepare($query);
-        //
+        
+        /**
+         * Boucle pour échapper les caractères spéciaux avec 'htmlentities'
+         * A chaque tour de boucle, on remet au même endroit la même valeur mais échappée
+         */
+        foreach($data as $cle => $value){
+            $data[$cle] = htmlentities($value);
+        }
+
         // execution la requête
         $stmt->execute($data);
 
