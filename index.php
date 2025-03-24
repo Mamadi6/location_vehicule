@@ -21,6 +21,8 @@ $clientCtl = new ClientController();
 $homeCtl = new HomeController();
 
 $vehiculeCtl = new VehiculeController;
+$reservationCtl = new ReservationController();
+
 
 
 include_once "Vue/header.phtml";
@@ -29,10 +31,12 @@ include_once "Vue/header.phtml";
 try{
     $userCtl->userAction();
     $clientCtl->userAction();
-    
+
     $vehiculeCtl->vehiculeAction();
 
     $homeCtl->homeAction();
+
+    $reservationCtl->reservationAction();
 
 
 // Si le 'try' echoue, on effectue le 'catch'

@@ -3,7 +3,7 @@
 <div class="row">
     <?php foreach($vehicules as $vehicule): ?>
         <div class="card col-4 m-1 p-0" style="width: 18rem;">
-            <img src="https://plchldr.co/i/500x250" alt="plchldr.co" class="">
+            <img src="Public/images/<?= $vehicule->getPhoto() ?>" alt="plchldr.co" class="">
             <div class="card-body">
                 <h5 class="card-title">
                     <?= $vehicule->getMarque() ?>

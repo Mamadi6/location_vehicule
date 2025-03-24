@@ -7,15 +7,17 @@ class Reservation
 	private $debut;
 	private $fin;
 	private $dateReservation;
+	private $total;
 	private $client;
 	private $vehicule;
 
-	public function __construct($id,  $debut,  $fin,  $dateReservation,  $client,  $vehicule)
+	public function __construct($id,  $debut,  $fin,  $dateReservation, $total,  $client,  $vehicule)
 	{
 		$this->id = $id;
 		$this->debut = $debut;
 		$this->fin = $fin;
 		$this->dateReservation = $dateReservation;
+		$this->total = $total;
 		$this->client = $client;
 		$this->vehicule = $vehicule;
 	}
@@ -39,6 +41,11 @@ class Reservation
 	public function getDateReservation()
 	{
 		return $this->dateReservation;
+	}
+
+	public function getTotal()
+	{
+		return $this->total;
 	}
 
 	public function getClient()
@@ -71,6 +78,11 @@ class Reservation
 	public function setDateReservation($dateReservation): void
 	{
 		$this->dateReservation = $dateReservation;
+	}
+
+	public function setTotal($total): void
+	{
+		$this->total = $total;
 	}
 
 	public function setClient($client): void

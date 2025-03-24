@@ -2,7 +2,7 @@
 
 
         
-    <img src="https://plchldr.co/i/500x250" alt="plchldr.co" class="">
+    <img src="Public/images/<?= $vehicule->getPhoto() ?>" alt="plchldr.co" class="">
     
     <h5 class="card-title">
         Prix journalier : <?= $vehicule->getPrixJournalier() ?>€
@@ -13,5 +13,5 @@
     <p class="card-text">
         <?= $vehicule->getDescription() ?>
     </p>
-    <a href="?homeAction=reserver&id=<?= $vehicule->getId() ?>" class="btn btn-primary">Réserver</a>
+    <a href="?actionReservation=new&id=<?= $vehicule->getId() ?>" class="btn btn-primary">Réserver</a>
 

@@ -21,6 +21,7 @@ class HomeController extends ControllerAbstract{
                 case "detail":
                     $vehicule = $vehiculeMdl->show($id);
                     include("Vue/showDetailVeh.phtml");
+                    // include("Vue/reservation/new.phtml");
                     break;
 
                 
