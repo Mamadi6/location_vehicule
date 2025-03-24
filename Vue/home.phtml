@@ -1,0 +1,19 @@
+<h2 class="text-center">Nos véhicules disponibles</h2>
+
+<div class="row">
+    <?php foreach($vehicules as $vehicule): ?>
+        <div class="card col-4 m-1 p-0" style="width: 18rem;">
+            <img src="https://plchldr.co/i/500x250" alt="plchldr.co" class="">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <?= $vehicule->getMarque() ?>
+                    Prix : <?= $vehicule->getPrixJournalier() ?>€
+                </h5>
+                <p class="card-text">
+                    <?= $vehicule->getDescription() ?>
+                </p>
+                <a href="?homeAction=detail&id=<?= $vehicule->getId() ?>" class="btn btn-primary">Détail</a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

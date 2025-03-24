@@ -18,6 +18,7 @@ spl_autoload_register(function($classe){
 
 $userCtl = new UserController;
 $clientCtl = new ClientController();
+$homeCtl = new HomeController();
 
 
 include_once "Vue/header.phtml";
@@ -26,6 +27,7 @@ include_once "Vue/header.phtml";
 try{
     $userCtl->userAction();
     $clientCtl->userAction();
+    $homeCtl->homeAction();
 
 // Si le 'try' echoue, on effectue le 'catch'
 }catch(Exception $e){

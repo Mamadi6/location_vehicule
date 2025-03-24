@@ -1,0 +1,17 @@
+    <h2 class="text-center">Détails du véhicule <?= $vehicule->getMarque() ?></h2>
+
+
+        
+    <img src="https://plchldr.co/i/500x250" alt="plchldr.co" class="">
+    
+    <h5 class="card-title">
+        Prix journalier : <?= $vehicule->getPrixJournalier() ?>€
+    </h5>
+    <h5>
+        Couleur : <?= $vehicule->getCouleur() ?>
+    </h5>
+    <p class="card-text">
+        <?= $vehicule->getDescription() ?>
+    </p>
+    <a href="?homeAction=reserver&id=<?= $vehicule->getId() ?>" class="btn btn-primary">Réserver</a>
+
