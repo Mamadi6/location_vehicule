@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 class User
 {
 
@@ -8,22 +10,21 @@ class User
     private $nom;
     private $login;
     private $mdp;
-    private $role;
+    private $role = "CLIENT";
     private $adresse;
     private $cp;
+    private $ville;
     private $dateInscription;
 
-    public function __construct($id,  $prenom,  $nom,  $login,  $mdp,  $role,  $adresse,  $cp,  $dateInscription)
+    public function __construct($data = [])
     {
-        $this->id = $id;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
-        $this->login = $login;
-        $this->mdp = $mdp;
-        $this->role = $role;
-        $this->adresse = $adresse;
-        $this->cp = $cp;
-        $this->dateInscription = $dateInscription;
+        foreach ($data as $cle => $valeur) {
+            $methode = "set" . ucfirst($cle);
+
+            if (method_exists($this, $methode)) {
+                $this->$methode($valeur);
+            }
+        }
     }
 
     public function getId()
@@ -51,11 +52,6 @@ class User
         return $this->mdp;
     }
 
-    public function getRole()
-    {
-        return $this->role;
-    }
-
     public function getAdresse()
     {
         return $this->adresse;
@@ -66,11 +62,15 @@ class User
         return $this->cp;
     }
 
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
     public function getDateInscription()
     {
         return $this->dateInscription;
     }
-
 
     public function setId($id): void
     {
@@ -97,11 +97,6 @@ class User
         $this->mdp = $mdp;
     }
 
-    public function setRole($role): void
-    {
-        $this->role = $role;
-    }
-
     public function setAdresse($adresse): void
     {
         $this->adresse = $adresse;
@@ -110,6 +105,11 @@ class User
     public function setCp($cp): void
     {
         $this->cp = $cp;
+    }
+
+    public function setVille($ville): void
+    {
+        $this->ville = $ville;
     }
 
     public function setDateInscription($dateInscription): void

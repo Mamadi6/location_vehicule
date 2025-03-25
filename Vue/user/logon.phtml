@@ -1,0 +1,49 @@
+
+<h2 class="text-center">new User</h2>
+
+<?php if( isset($msgErreurForm) ): ?>
+    <div class="alert alert-danger text-center h3"> <?= $msgErreurForm; ?> </div>
+<?php endif; ?>
+
+
+<form method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Prénom</label>
+        <input type="text" required minlength="2" name="prenom" class="form-control" value="<?= $user->getPrenom() ?>">
+        <div class="text-danger my-1"> <?= $erreurs['prenom'] ?? ''; ?> </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Login</label>
+        <input type="text" name="login" minlength="4" maxlength="6" required class="form-control" value="<?= $user->getLogin() ?>">
+        <div class="text-danger my-1"> <?= $erreurs['login'] ?? ''; ?> </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Password</label>
+        <input type="password" name="mdp" minlength="4" required class="form-control">
+        <div class="text-danger my-1"> <?= $erreurs['mdp'] ?? ''; ?> </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Adresse</label>
+        <input type="text" name="adresse" required class="form-control" value="<?= $user->getAdresse() ?>">
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Code postal</label>
+        <input type="number" name="cp" required class="form-control" value="<?= $user->getCp() ?>">
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Ville</label>
+        <input type="text" name="ville" required class="form-control" value="">
+    </div>
+
+    <input type="radio" value="rgpd" name="rgpd">
+    <label for="">Accept</label>
+
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>
+

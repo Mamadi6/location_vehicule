@@ -1,9 +1,14 @@
 <?php
 
-spl_autoload_register(function($classe){
-    $page = "Entity/" . $classe . ".php";
+use App\Controller\HomeController;
+use App\Controller\UserController;
 
-    if( file_exists($page) ){
-        include $page;
-    }
-});
+include "vendor/autoload.php";
+
+$userCtl = new UserController();
+$homeCtl = new HomeController();
+
+
+
+$homeCtl->home();
+$userCtl->actionUser();

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 class Vehicule{
 
     private $id;
@@ -9,7 +11,16 @@ class Vehicule{
     private $prix_journalier;
     private $photo;
 
-    public function __construct( $id,  $marque,  $couleur,  $description,  $prix_journalier,  $photo){$this->id = $id;$this->marque = $marque;$this->couleur = $couleur;$this->description = $description;$this->prix_journalier = $prix_journalier;$this->photo = $photo;}
+    public function __construct($data = [])
+    {
+        foreach ($data as $cle => $valeur) {
+            $methode = "set" . ucfirst($cle);
+
+            if (method_exists($this, $methode)) {
+                $this->$methode($valeur);
+            }
+        }
+    }
 	
     public function getId() {return $this->id;}
 
