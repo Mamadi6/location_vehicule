@@ -15,7 +15,6 @@ spl_autoload_register(function($classe){
 });
 
 
-
 $userCtl = new UserController;
 $clientCtl = new ClientController();
 $homeCtl = new HomeController();

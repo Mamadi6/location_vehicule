@@ -11,16 +11,16 @@ class Reservation
 	private $client;
 	private $vehicule;
 
-	public function __construct($id,  $debut,  $fin,  $dateReservation, $total,  $client,  $vehicule)
-	{
-		$this->id = $id;
-		$this->debut = $debut;
-		$this->fin = $fin;
-		$this->dateReservation = $dateReservation;
-		$this->total = $total;
-		$this->client = $client;
-		$this->vehicule = $vehicule;
-	}
+	public function __construct($data = [])
+    { 
+        foreach ($data as $cle => $valeur) {
+            $methode = "set" . ucfirst($cle);
+
+            if (method_exists($this, $methode)) {
+                $this->$methode($valeur);
+            }
+        }
+    }
 
 
 	public function getId()

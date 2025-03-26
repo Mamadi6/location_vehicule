@@ -30,6 +30,17 @@ class ClientController extends ControllerAbstract{
             // selon 'actionUser'
             switch($actionClient){
 
+                case "compte":
+                    if( !$this->isConnected() ){
+                        $_SESSION["warning"] = "veuillez vous connecte!";
+                        header("location: ?actionClient=login");
+                        exit;
+                    }  
+                    $reservations = unserialize( $_SESSION['user'] )->getReservations();
+
+                    include "Vue/user/compte.phtml";
+                    break;
+
                 case 'login':
 
                     if( isset($_POST['login']) ){

@@ -28,7 +28,7 @@
             <div class=" text-end">
 
             <?php if( isset($_SESSION['user'])): ?> 
-                <a class="" href="index.php?actionClient=">Compte</a>
+                <a class="" href="index.php?actionClient=compte">Compte</a>
                 <a class="" href="index.php?actionClient=logout">Logout</a>
                 <span>Bonjour <?= unserialize($_SESSION['user'])->getPrenom() ?></span>
             <?php else: ?>

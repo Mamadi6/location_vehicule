@@ -6,9 +6,13 @@ abstract class ModelAbstract{
 
     public function __construct()
     {
-        $this->pdo = new PDO("mysql:host=localhost;dbname=b2_location;port=3308", "root", "", [
-            PDO::ATTR_DEFAULT_FETCH_MODE  => PDO::FETCH_ASSOC,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        include "config.php";
+
+        $dns = "mysql:host=".$serveur.";dbname=".$dbname.";".$port;
+   
+        $this->pdo = new \PDO($dns, $user, $mdp, [
+            \PDO::ATTR_DEFAULT_FETCH_MODE  => \PDO::FETCH_ASSOC,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
         ]);
     }
 

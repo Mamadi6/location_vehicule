@@ -18,9 +18,13 @@
 
             // TEST si le mdp de la BD est égal qu mdpFormulaire
             if( password_verify($mdpForm, $mdp) ){
-               
+                $resMdl = new ReservationModel();
+                $res = $resMdl->reservationByClient($id);
+          
                 //On retourne un 'USER'
                 $user = $this->findById($id);
+                $user->setReservations($res);
+               
                 return $user;
             }
         }

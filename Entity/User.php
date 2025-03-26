@@ -14,6 +14,8 @@ class User
     private $ville;
     private $dateInscription;
 
+    private $reservaions = [];
+
     // contructeur: invoqué au moment de l'instanciation(new Use(..., ..., ...))
     public function __construct($id, $prenom, $login,  $mdp,  $role,  $adresse,  $cp, $ville,  $dateInscription = null)
     {
@@ -75,6 +77,8 @@ class User
         return $this->dateInscription;
     }
 
+    public function getReservations(){return $this->reservaions;}
+
     // SETTER (mutateur)
 
     public function setId($id): void
@@ -121,4 +125,6 @@ class User
     {
         $this->dateInscription = $dateInscription;
     }
+
+    public function setReservations($res){$this->reservaions = $res;}
 }

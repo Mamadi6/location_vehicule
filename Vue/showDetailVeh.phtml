@@ -13,5 +13,5 @@
     <p class="card-text">
         <?= $vehicule->getDescription() ?>
     </p>
-    <a href="?actionReservation=new&id=<?= $vehicule->getId() ?>" class="btn btn-primary">Réserver</a>
+    <a href="?actionReservation=new&id=<?= $vehicule->getId() ?>&prix_journalier=<?= $vehicule->getPrixJournalier() ?>" class="btn btn-primary">Réserver</a>
 

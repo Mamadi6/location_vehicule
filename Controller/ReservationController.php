@@ -18,11 +18,25 @@ class ReservationController extends ControllerAbstract{
 
         switch ($actionReservation) {
             case 'new':
-                
+
                 if(isset($_POST['debut'])){
                     extract($_POST);
-                    $reservation= new Reservation(0, $debut, $fin,"", $total, $client, $vehicule);
-                    $this->reservationMdl->new($reservation);
+
+                    // test si date fin > date debut
+                    if( $fin > $debut && $debut >= date("Y-m-d") ){
+
+                        // CALCUL : NOMBRE DE JOUR
+                        $d1 = new DateTime($debut);
+                        $d2 = new DateTime($fin);
+
+                        $int = $d1->diff($d2);
+
+                        $nbJours = $int->days;
+                        $_POST['total'] = $prix*$nbJours;
+                        $reservation= new Reservation($_POST);
+
+                        $this->reservationMdl->new($reservation);
+                    }
                 }
 
                 include "Vue/reservation/new.phtml";
