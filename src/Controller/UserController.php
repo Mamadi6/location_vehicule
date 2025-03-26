@@ -3,12 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Model\UserModel;
 
 class UserController extends AbstractController{
+    
+    private $userMdl;
+
+    public function __construct(){
+        $this->userMdl = new UserModel();
+    }
 
     public function actionUser(){
 
-        $user = new User();
 
         if( isset($_GET['actionClient']) ){
             extract($_GET);
@@ -17,15 +23,36 @@ class UserController extends AbstractController{
                 case "logon":
                     
                     if( isset($_POST['login']) ){
-                        $user = new User($_POST);
                     }
                     
-                    $this->render("user/logon", ["user" => $user]);
+                    $this->render("user/logon", ["user" => new User()]);
                     break;
 
                 case "login":
+
+                    if( isset($_POST['login']) ){
+                        $user = $this->userMdl->login($_POST['login'], $_POST['mdp']);
+
+                        if( $user ){
+                            $_SESSION['user'] = serialize($user);
+                            $_SESSION['ADMIN'] = $user->getRole() == "ADMIN" ? 1 : 0;
+
+                            header("location: .");
+                            exit;
+                        }
+                    }
+
                     $this->render("user/login");
                     break;
+
+                case "logout":
+                    session_destroy();
+                    
+                    header("location: .");
+                    exit;
+                
+                default:
+                    throw new \Exception("Page '$actionClient' n'existe pas");
             }
         }
     }

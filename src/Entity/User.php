@@ -7,7 +7,6 @@ class User
 
     private $id;
     private $prenom;
-    private $nom;
     private $login;
     private $mdp;
     private $role = "CLIENT";
@@ -37,11 +36,6 @@ class User
         return $this->prenom;
     }
 
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
     public function getLogin()
     {
         return $this->login;
@@ -51,6 +45,8 @@ class User
     {
         return $this->mdp;
     }
+
+    public function getRole(){return $this->role;}
 
     public function getAdresse()
     {
@@ -82,15 +78,12 @@ class User
         $this->prenom = $prenom;
     }
 
-    public function setNom($nom): void
-    {
-        $this->nom = $nom;
-    }
-
     public function setLogin($login): void
     {
         $this->login = $login;
     }
+
+    public function setRole($role){$this->role = $role;}
 
     public function setMdp($mdp): void
     {
